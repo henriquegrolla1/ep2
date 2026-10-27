@@ -7,6 +7,13 @@
     <section class="post-cabecalho">
         <h2>{{ post.title }}</h2>
         <p class="data">Publicado em {{ post.date|date:"d/m/Y \à\s H:i" }}</p>
+        {% if post.category_set.all %}
+        <ul class="tags">
+            {% for category in post.category_set.all %}
+            <li><a href="{% url 'blog:category' category.id %}">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
     </section>
 
     <section class="post-conteudo">

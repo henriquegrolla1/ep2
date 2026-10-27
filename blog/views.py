@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views import generic
 
-from .models import Post, Comment
+from .models import Post, Comment, Category
 from .forms import PostForm, CommentForm
 
 
@@ -66,3 +66,16 @@ def create_comment(request, post_id):
         form = CommentForm()
     context = {'form': form, 'post': post}
     return render(request, 'blog/comment.html', context)
+
+
+class CategoryListView(generic.ListView):
+    model = Category
+    template_name = 'blog/categories.html'
+    ordering = ['name']
+
+
+def detail_category(request, category_id):
+    category = get_object_or_404(Category, pk=category_id)
+    post_list = category.posts.order_by('-date')
+    context = {'category': category, 'post_list': post_list}
+    return render(request, 'blog/index.html', context)

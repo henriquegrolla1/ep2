@@ -21,6 +21,7 @@
         <nav>
             <ul>
                 <li><a href="{% url 'blog:index' %}">Posts</a></li>
+                <li><a href="{% url 'blog:categories' %}">Categorias</a></li>
                 <li><a href="{% url 'blog:create' %}">Novo post</a></li>
                 {% if user.is_authenticated %}
                 <li>

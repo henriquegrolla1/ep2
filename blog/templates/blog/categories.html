@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Categorias{% endblock %}
+
+{% block content %}
+<section>
+    <h2>Categorias</h2>
+    <p>Navegue pelos posts do Diário Cruz-Maltino por assunto.</p>
+
+    {% for category in category_list %}
+    <article class="categoria">
+        <h3><a href="{% url 'blog:category' category.id %}">{{ category.name }}</a></h3>
+        <p>{{ category.description }}</p>
+        <p class="data">{{ category.posts.count }} post(s)</p>
+    </article>
+    {% empty %}
+    <p class="aviso">Nenhuma categoria cadastrada ainda.</p>
+    {% endfor %}
+</section>
+{% endblock %}

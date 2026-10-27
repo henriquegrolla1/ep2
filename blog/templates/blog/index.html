@@ -1,11 +1,17 @@
 {% extends 'base.html' %}
 
-{% block title %}Posts{% endblock %}
+{% block title %}{% if category %}{{ category.name }}{% else %}Posts{% endif %}{% endblock %}
 
 {% block content %}
 <section>
+    {% if category %}
+    <p class="data"><a href="{% url 'blog:categories' %}">Categorias</a> / {{ category.name }}</p>
+    <h2>Categoria: {{ category.name }}</h2>
+    <p>{{ category.description }}</p>
+    {% else %}
     <h2>Últimos posts</h2>
     <p>Notícias, bastidores e a cobertura completa dos jogos do Vasco: pré-jogo, lance a lance e pós-jogo.</p>
+    {% endif %}
 
     {% if post_list %}
     <div class="cards">
@@ -13,12 +19,19 @@
         <article class="card">
             <p class="data">{{ post.date|date:"d/m/Y H:i" }}</p>
             <h3><a href="{% url 'blog:detail' post.id %}">{{ post.title }}</a></h3>
+            {% if post.category_set.all %}
+            <ul class="tags">
+                {% for post_category in post.category_set.all %}
+                <li><a href="{% url 'blog:category' post_category.id %}">{{ post_category.name }}</a></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
             <a class="ler-mais" href="{% url 'blog:detail' post.id %}">Ler post</a>
         </article>
         {% endfor %}
     </div>
     {% else %}
-    <p class="aviso">Nenhum post publicado ainda.</p>
+    <p class="aviso">Nenhum post {% if category %}nesta categoria{% else %}publicado{% endif %} ainda.</p>
     {% endif %}
 
     <div class="acoes">

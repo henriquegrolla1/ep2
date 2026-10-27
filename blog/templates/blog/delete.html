@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Remover post{% endblock %}
+
+{% block content %}
+<section>
+    <h2>Remover post</h2>
+    <p class="aviso">Tem certeza que deseja remover o post <strong>"{{ post.title }}"</strong>? Esta ação não pode ser desfeita.</p>
+    <form action="{% url 'blog:delete' post.id %}" method="post">
+        {% csrf_token %}
+        <div class="acoes">
+            <button class="botao botao-perigo" type="submit">Sim, remover</button>
+            <a class="botao" href="{% url 'blog:detail' post.id %}">Cancelar</a>
+        </div>
+    </form>
+</section>
+{% endblock %}

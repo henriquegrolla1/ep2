@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<article>
+    <section class="post-cabecalho">
+        <h2>{{ post.title }}</h2>
+        <p class="data">Publicado em {{ post.date|date:"d/m/Y \à\s H:i" }}</p>
+    </section>
+
+    <section class="post-conteudo">
+        {{ post.content|safe }}
+    </section>
+
+    <div class="acoes">
+        <a class="botao" href="{% url 'blog:update' post.id %}">Editar post</a>
+        <a class="botao botao-perigo" href="{% url 'blog:delete' post.id %}">Remover post</a>
+        <a class="botao" href="{% url 'blog:index' %}">Voltar para os posts</a>
+    </div>
+</article>
+{% endblock %}

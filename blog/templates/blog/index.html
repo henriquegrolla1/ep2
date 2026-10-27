@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Posts{% endblock %}
+
+{% block content %}
+<section>
+    <h2>Últimos posts</h2>
+    <p>Notícias, bastidores e a cobertura completa dos jogos do Vasco: pré-jogo, lance a lance e pós-jogo.</p>
+
+    {% if post_list %}
+    <div class="cards">
+        {% for post in post_list %}
+        <article class="card">
+            <p class="data">{{ post.date|date:"d/m/Y H:i" }}</p>
+            <h3><a href="{% url 'blog:detail' post.id %}">{{ post.title }}</a></h3>
+            <a class="ler-mais" href="{% url 'blog:detail' post.id %}">Ler post</a>
+        </article>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="aviso">Nenhum post publicado ainda.</p>
+    {% endif %}
+
+    <div class="acoes">
+        <a class="botao" href="{% url 'blog:create' %}">Escrever novo post</a>
+    </div>
+</section>
+{% endblock %}

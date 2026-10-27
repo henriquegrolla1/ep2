@@ -22,6 +22,17 @@
             <ul>
                 <li><a href="{% url 'blog:index' %}">Posts</a></li>
                 <li><a href="{% url 'blog:create' %}">Novo post</a></li>
+                {% if user.is_authenticated %}
+                <li>
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button class="nav-botao" type="submit">Sair ({{ user.username }})</button>
+                    </form>
+                </li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Entrar</a></li>
+                <li><a href="{% url 'accounts:signup' %}">Cadastrar</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>

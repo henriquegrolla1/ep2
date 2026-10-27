@@ -1,0 +1,397 @@
+/* Cores do Vasco: fundo branco, preto predominante e vermelho apenas nos detalhes */
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 16px;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6em;
+  color: #1a1a1a;
+  background-color: white;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: #c8102e;
+}
+
+a:hover {
+  color: black;
+}
+
+/* Cabeçalho e barra de navegação */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  padding: 12px 5%;
+  border-bottom: 4px solid #c8102e;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+}
+
+.marca img {
+  display: block;
+}
+
+.marca h1 {
+  color: white;
+  font-size: 1.5rem;
+  margin: 0 0 0 14px;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: block;
+}
+
+nav a {
+  display: block;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 8px 12px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: white;
+  background-color: #c8102e;
+}
+
+/* Conteúdo principal */
+
+main {
+  width: 80%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px 0;
+  flex-grow: 1;
+}
+
+h2 {
+  color: black;
+  border-left: 6px solid #c8102e;
+  padding-left: 12px;
+  margin-top: 10px;
+}
+
+h3 {
+  color: black;
+}
+
+/* Listagem de posts */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}
+
+.card {
+  border: 1px solid #dddddd;
+  border-top: 5px solid black;
+  padding: 20px;
+}
+
+.card:hover {
+  border-top: 5px solid #c8102e;
+}
+
+.card h3 {
+  margin-top: 0;
+  line-height: 1.3em;
+}
+
+.data {
+  font-size: 13px;
+  color: #666666;
+}
+
+.ler-mais {
+  font-weight: bold;
+}
+
+/* Botões e formulários */
+
+.botao {
+  display: inline-block;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 8px 16px;
+  border: none;
+  border-bottom: 3px solid #c8102e;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.botao:hover {
+  color: white;
+  background-color: #c8102e;
+}
+
+.botao-perigo {
+  background-color: #c8102e;
+  border-bottom: 3px solid black;
+}
+
+.botao-perigo:hover {
+  background-color: black;
+}
+
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+form p {
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  font-weight: bold;
+}
+
+form input,
+form textarea,
+form select {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  padding: 8px;
+  border: 1px solid #aaaaaa;
+}
+
+form textarea {
+  min-height: 300px;
+}
+
+.aviso {
+  background-color: #f4f4f4;
+  border-left: 6px solid #c8102e;
+  padding: 12px 16px;
+}
+
+/* Página individual do post */
+
+.post-cabecalho h2 {
+  font-size: 1.8rem;
+  line-height: 1.3em;
+}
+
+.post-conteudo p {
+  text-align: justify;
+}
+
+.post-conteudo h3 {
+  background-color: black;
+  color: white;
+  padding: 6px 12px;
+  border-left: 6px solid #c8102e;
+}
+
+.post-conteudo img {
+  max-width: 100%;
+}
+
+.post-conteudo table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.post-conteudo th {
+  background-color: black;
+  color: white;
+  padding: 8px;
+  text-align: left;
+}
+
+.post-conteudo td {
+  padding: 8px;
+  border-bottom: 1px solid #dddddd;
+  vertical-align: top;
+}
+
+/* Placar */
+
+.placar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-color: black;
+  color: white;
+  padding: 20px;
+  margin: 20px 0;
+  border-bottom: 5px solid #c8102e;
+  text-align: center;
+}
+
+.placar .time {
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 35%;
+}
+
+.placar .gols {
+  font-size: 2.4rem;
+  font-weight: bold;
+}
+
+.placar-info {
+  text-align: center;
+  font-size: 14px;
+  color: #666666;
+}
+
+/* Lance a lance (acompanhamento em tempo real) */
+
+.lances {
+  list-style: none;
+  padding: 0;
+  border-left: 3px solid black;
+  margin-left: 30px;
+}
+
+.lances li {
+  position: relative;
+  padding: 8px 0 8px 50px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.lances .minuto {
+  position: absolute;
+  left: -30px;
+  top: 8px;
+  width: 60px;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  font-size: 13px;
+  text-align: center;
+}
+
+.lances .gol {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.lances .gol .minuto {
+  background-color: #c8102e;
+}
+
+/* Linha do tempo (cronologia de notícias) */
+
+.cronologia {
+  list-style: none;
+  padding: 0;
+}
+
+.cronologia li {
+  border-left: 5px solid black;
+  padding: 4px 0 12px 16px;
+  margin-bottom: 8px;
+}
+
+.cronologia li:hover {
+  border-left: 5px solid #c8102e;
+}
+
+.cronologia strong {
+  display: block;
+  color: #c8102e;
+}
+
+.fontes {
+  font-size: 13px;
+  color: #666666;
+}
+
+/* Rodapé */
+
+footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  padding: 16px 5%;
+  border-top: 4px solid #c8102e;
+}
+
+footer p {
+  margin: 4px 0;
+}
+
+/* Design responsivo */
+
+@media only screen and (max-width: 900px) {
+  header {
+    flex-direction: column;
+  }
+
+  .marca {
+    margin-bottom: 10px;
+  }
+
+  nav ul {
+    justify-content: center;
+  }
+
+  main {
+    width: 92%;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .marca h1 {
+    font-size: 1.2rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .post-conteudo p {
+    text-align: left;
+  }
+
+  .placar .time {
+    font-size: 1rem;
+  }
+
+  .placar .gols {
+    font-size: 1.8rem;
+  }
+
+  .post-conteudo table {
+    font-size: 13px;
+  }
+}

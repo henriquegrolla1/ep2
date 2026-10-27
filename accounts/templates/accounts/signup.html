@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Criar conta{% endblock %}
+
+{% block content %}
+<section>
+    <h2>Criar conta</h2>
+    <p>Crie sua conta para comentar nos posts do Diário Cruz-Maltino.</p>
+    <form action="{% url 'accounts:signup' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="acoes">
+            <button class="botao" type="submit">Criar conta</button>
+        </div>
+    </form>
+    <p>Já tem conta? <a href="{% url 'login' %}">Entrar</a></p>
+</section>
+{% endblock %}

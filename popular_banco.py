@@ -5,6 +5,8 @@ from blog.models import Post
 posts = [
     ('Boca Juniors 0 x 1 Vasco: Adson cala a Bombonera e quebra tabu de 75 anos',
      '2026-10-13T18:00:00-03:00', 'boca-x-vasco-ida.html'),
+    ('Vasco 1 x 3 Boca Juniors: Paredes acaba com o sonho da final no Maracanã',
+     '2026-10-20T18:00:00-03:00', 'vasco-x-boca-volta.html'),
 ]
 
 for title, date, filename in posts:

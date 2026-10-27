@@ -7,18 +7,7 @@
     <h2>Editar post</h2>
     <form action="{% url 'blog:update' post.id %}" method="post">
         {% csrf_token %}
-        <p>
-            <label for="title">Título</label>
-            <input type="text" name="title" id="title" value="{{ post.title }}">
-        </p>
-        <p>
-            <label for="date">Data de postagem</label>
-            <input type="datetime-local" name="date" id="date" value="{{ post.date|date:'Y-m-d\TH:i' }}">
-        </p>
-        <p>
-            <label for="content">Conteúdo (HTML)</label>
-            <textarea name="content" id="content">{{ post.content }}</textarea>
-        </p>
+        {{ form.as_p }}
         <div class="acoes">
             <button class="botao" type="submit">Salvar alterações</button>
             <a class="botao" href="{% url 'blog:detail' post.id %}">Cancelar</a>

@@ -1,7 +1,7 @@
-# Popula o banco de dados com os posts, usuários e comentários do blog.
+# Popula o banco de dados com os posts, usuários, comentários e categorias do blog.
 # Uso: python manage.py shell < popular_banco.py
 from django.contrib.auth.models import User
-from blog.models import Post, Comment
+from blog.models import Post, Comment, Category
 
 IDA = 'Boca Juniors 0 x 1 Vasco: Adson cala a Bombonera e quebra tabu de 75 anos'
 VOLTA = 'Vasco 1 x 3 Boca Juniors: Paredes acaba com o sonho da final no Maracanã'
@@ -52,3 +52,28 @@ for title, username, date, text in comments:
         comment.save()
         Comment.objects.filter(pk=comment.pk).update(date=date)
         print('Comentário criado:', username, '->', post.title)
+
+categories = [
+    ('Jogos',
+     'Cobertura completa das partidas do Vasco: análise pré-jogo, acompanhamento lance a lance e análise pós-jogo.',
+     [IDA, VOLTA]),
+    ('Copa Sul-Americana',
+     'Tudo sobre a campanha do Vasco na Copa Sul-Americana 2026.',
+     [IDA, VOLTA, MARACANA]),
+    ('Maracanã',
+     'Os jogos do Vasco no Maracanã e a disputa com o consórcio Fla-Flu pelo uso do estádio.',
+     [VOLTA, MARACANA]),
+    ('Notícias e bastidores',
+     'Decisões judiciais, diretoria, SAF, técnicos, contratações e rumores do Vasco.',
+     [MARACANA]),
+]
+
+for name, description, titles in categories:
+    category = Category.objects.filter(name=name).first()
+    if category is None:
+        category = Category(name=name)
+    category.description = description
+    category.save()
+    for title in titles:
+        category.posts.add(Post.objects.get(title=title))
+    print('Categoria salva:', name)

@@ -19,4 +19,23 @@
         <a class="botao" href="{% url 'blog:index' %}">Voltar para os posts</a>
     </div>
 </article>
+
+<section class="comentarios">
+    <h2>Comentários ({{ comment_list|length }})</h2>
+
+    {% if user.is_authenticated %}
+    <a class="botao" href="{% url 'blog:comment' post.id %}">Comentar</a>
+    {% else %}
+    <p class="aviso"><a href="{% url 'login' %}?next={% url 'blog:comment' post.id %}">Entre</a> ou <a href="{% url 'accounts:signup' %}">cadastre-se</a> para comentar.</p>
+    {% endif %}
+
+    {% for comment in comment_list %}
+    <article class="comentario">
+        <p class="comentario-autor"><strong>{{ comment.author.username }}</strong> <span class="data">em {{ comment.date|date:"d/m/Y \à\s H:i" }}</span></p>
+        <p>{{ comment.text }}</p>
+    </article>
+    {% empty %}
+    <p>Ainda não há comentários. Seja o primeiro a comentar!</p>
+    {% endfor %}
+</section>
 {% endblock %}

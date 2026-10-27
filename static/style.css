@@ -150,6 +150,48 @@ h3 {
   font-weight: bold;
 }
 
+/* Categorias */
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+}
+
+.tags a {
+  display: block;
+  background-color: black;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1.4em;
+  padding: 3px 10px;
+  border-left: 4px solid #c8102e;
+  text-decoration: none;
+}
+
+.tags a:hover {
+  background-color: #c8102e;
+}
+
+.categoria {
+  border: 1px solid #dddddd;
+  border-left: 6px solid black;
+  padding: 10px 20px;
+  margin-bottom: 16px;
+}
+
+.categoria:hover {
+  border-left: 6px solid #c8102e;
+}
+
+.categoria h3 {
+  margin: 6px 0;
+}
+
 /* Botões e formulários */
 
 .botao {
